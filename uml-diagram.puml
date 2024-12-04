@@ -1,0 +1,258 @@
+@startuml
+class persons.SpiritualPhrase {
+- String phrase
+- int cost
++ <<Create>> SpiritualPhrase(String,int)
++ String phrase()
++ int cost()
+}
+
+
+class Main {
++ {static} void main(String[])
+}
+
+class counters.Counter {
+~ int c
++ <<Create>> Counter(int)
++ <<Create>> Counter()
++ void add(int)
++ void decrease(int)
++ void reset()
++ int getCounter()
++ String toString()
+}
+
+
+enum counters.DayOfWeek {
++  SUNDAY
++  MONDAY
++  TUESDAY
++  WEDNESDAY
++  THURSDAY
++  FRIDAY
++  SATURDAY
+- String title
+~ <<Create>> DayOfWeek(String)
++ String getTitle()
++ String toString()
+}
+
+
+class environment.plants.CoconutTree {
+- Counter coconutCounter
++ void grow()
++ int getNumberOfCoconuts()
++ void collect()
+}
+
+
+interface environment.plants.Fermentable {
++ void ferment()
+}
+
+class environment.animals.Turtle {
++ void die()
++ void grow()
+}
+
+class environment.plants.Wheat {
++ void collect()
++ void grow()
+}
+
+class environment.Place {
+- String title
+~ float length
+~ float width
+~ float height
++ <<Create>> Place(String,float,float)
++ float getSquare()
++ String getTitle()
++ String toString()
++ boolean equals(Object)
++ int hashCode()
+}
+
+
+interface environment.plants.Collectable {
++ void collect()
+}
+
+interface persons.Farmer {
++ void collect(Collectable)
++ void dry(Dryable)
++ void ferment(Fermentable)
++ void sow(Island,Plant)
+}
+
+enum products.Storage {
++  WINE
++  RAISIN
++  TurtleMeat
++  COCONUT
++  WHEAT
+- String title
++ Counter quantity
+~ <<Create>> Storage(String)
++ String getTitle()
++ int getQuantity()
++ String toString()
+}
+
+
+interface environment.plants.Dryable {
++ void dry()
+}
+
+interface environment.Growable {
++ void grow()
+}
+
+class environment.animals.AnimalAlreadyDied {
+- Animal animal
++ <<Create>> AnimalAlreadyDied(Animal)
++ String getMessage()
+}
+
+
+abstract class environment.animals.Animal {
+- String name
+- float size
+- boolean isAlive
++ {abstract}void die()
++ boolean isAlive()
+~ void notAlive()
+~ void setName(String)
+~ void setSize(float)
++ String getName()
++ float getSize()
++ String toString()
++ boolean equals(Object)
++ int hashCode()
+}
+
+
+enum counters.MonthOfYear {
++  January
++  February
++  March
++  April
++  May
++  June
++  July
++  August
++  September
++  October
++  November
++  December
+- String title
+~ <<Create>> MonthOfYear(String)
++ String getTitle()
++ String toString()
+}
+
+
+abstract class persons.Person {
+- String name
++ <<Create>> Person(String)
++ String getName()
++ {abstract}void work()
++ void kill(Animal)
++ void say(String)
++ void thought(String)
++ void action(String)
++ {abstract}String toString()
++ {abstract}int hashCode()
++ {abstract}boolean equals(Object)
+}
+
+
+class persons.NotEnoughSpirituality {
++ <<Create>> NotEnoughSpirituality(String)
++ <<Create>> NotEnoughSpirituality()
++ String getMessage()
+}
+
+abstract class environment.plants.Plant {
+- String name
+- String color
+- float height
++ String getName()
++ String getColor()
++ float getHeight()
+~ void setName(String)
+~ void setColor(String)
+~ void setHeight(float)
++ String toString()
++ boolean equals(Object)
++ int hashCode()
+}
+
+
+class environment.plants.Grape {
+- Counter bunchOfGrapesCounter
++ void grow()
++ void dry()
++ int getNumberOfBunchOfGrapes()
++ void ferment()
+}
+
+
+class environment.Island {
+- ArrayList<Animal> fauna
+- ArrayList<Plant> flora
+- ArrayList<Person> islandPopulation
++ <<Create>> Island(String,float,float)
++ void addFauna(Animal)
++ void addFlora(Plant)
++ void addPersons(Person)
++ ArrayList<Animal> getFauna()
++ ArrayList<Plant> getFlora()
++ ArrayList<Person> getIslandPopulation()
++ String toString()
+}
+
+
+class persons.MainCharacter {
+- int spirituality
++ <<Create>> MainCharacter(String,int)
++ void readBible()
++ void pray()
++ int getSpirituality()
++ void saySpiritualPhrases(SpiritualPhrase)
++ void work()
++ String toString()
++ boolean equals(Object)
++ int hashCode()
+}
+
+
+class counters.TimeCounter {
++ <<Create>> TimeCounter(int)
+- DayOfWeek GetDayOfWeek()
+- MonthOfYear GetMonth()
+- int GetDayOfMonth()
++ void GetNow()
++ void NextDay()
+}
+
+
+
+environment.plants.Collectable <|.. environment.plants.CoconutTree
+environment.plants.Plant <|-- environment.plants.CoconutTree
+environment.animals.Animal <|-- environment.animals.Turtle
+environment.plants.Collectable <|.. environment.plants.Wheat
+environment.plants.Plant <|-- environment.plants.Wheat
+environment.animals.Exception <|-- environment.animals.AnimalAlreadyDied
+environment.Growable <|.. environment.animals.Animal
+persons.Exception <|-- persons.NotEnoughSpirituality
+environment.Growable <|.. environment.plants.Plant
+environment.plants.Dryable <|.. environment.plants.Grape
+environment.plants.Fermentable <|.. environment.plants.Grape
+environment.plants.Plant <|-- environment.plants.Grape
+environment.Place <|-- environment.Island
+persons.Farmer <|.. persons.MainCharacter
+persons.Person <|-- persons.MainCharacter
+counters.Counter <|-- counters.TimeCounter
+@enduml
