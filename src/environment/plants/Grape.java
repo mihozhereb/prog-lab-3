@@ -9,7 +9,7 @@ public class Grape extends Plant implements Dryable, Fermentable {
     {
         setName("Виноград");
         setColor("Темно-синий");
-        setHeight(0.05f);
+        setHeight((float) (Math.random() * 0.02 + 0.03));
     }
 
     @Override
@@ -20,17 +20,17 @@ public class Grape extends Plant implements Dryable, Fermentable {
 
     @Override
     public void dry() {
-        Storage.RAISIN.quantity.add((int) (GetNumberOfBunchOfGrapes() * 0.5));
+        Storage.RAISIN.quantity.add((int) (getNumberOfBunchOfGrapes() * 0.5));
         bunchOfGrapesCounter.reset();
     }
 
-    public int GetNumberOfBunchOfGrapes() {
+    public int getNumberOfBunchOfGrapes() {
         return bunchOfGrapesCounter.getCounter();
     }
 
     @Override
     public void ferment() {
-        Storage.WINE.quantity.add((int) (GetNumberOfBunchOfGrapes() * 0.75));
+        Storage.WINE.quantity.add((int) (getNumberOfBunchOfGrapes() * 0.75));
         bunchOfGrapesCounter.reset();
     }
 }

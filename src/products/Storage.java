@@ -9,8 +9,8 @@ public enum Storage {
     COCONUT ("Кокос"),
     WHEAT ("Пшеница");
 
-    private String title;
-    public Counter quantity;
+    private final String title;
+    public final Counter quantity;
 
     Storage(String title) {
         this.title = title;

@@ -1,7 +1,7 @@
 package environment.animals;
 
 public class AnimalAlreadyDied extends Exception {
-    private Animal animal;
+    private final Animal animal;
 
     public AnimalAlreadyDied(Animal animal) {
         this.animal = animal;

@@ -35,7 +35,11 @@ public abstract class Plant implements Growable {
 
     @Override
     public String toString() {
-        return "Plant{name='" + name + "',height=" + height + ",color='" + color + "'}";
+        return "Plant{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", height=" + height +
+                '}';
     }
 
     @Override

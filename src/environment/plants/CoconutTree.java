@@ -9,7 +9,7 @@ public class CoconutTree extends Plant implements Collectable {
     {
         setName("Кокосовая пальма");
         setColor("Зеленый");
-        setHeight(0.2f);
+        setHeight((float) (Math.random() * 0.1 + 0.1));
     }
 
     @Override
@@ -18,13 +18,13 @@ public class CoconutTree extends Plant implements Collectable {
         setHeight((float) (getHeight() + Math.random() * 0.25));
     }
 
-    public int GetNumberOfCoconuts() {
+    public int getNumberOfCoconuts() {
         return coconutCounter.getCounter();
     }
 
     @Override
     public void collect() {
-        Storage.COCONUT.quantity.add(GetNumberOfCoconuts());
+        Storage.COCONUT.quantity.add(getNumberOfCoconuts());
         coconutCounter.reset();
     }
 }

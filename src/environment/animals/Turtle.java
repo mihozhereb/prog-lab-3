@@ -5,7 +5,7 @@ import products.Storage;
 public class Turtle extends Animal{
     {
         setName("Черепаха");
-        setSize(0.2f);
+        setSize((float) (Math.random() * 0.1 + 0.1));
     }
 
     @Override

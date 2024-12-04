@@ -8,22 +8,17 @@ public class Place {
     float width;
     float height;
 
-    public Place(String title, float x, float y, float z) {
+    public Place(String title, float x, float y) {
         this.title = title;
         this.length = x;
         this.width = y;
-        this.height = z;
     }
 
-    public float GetSquare() {
+    public float getSquare() {
         return length * width;
     }
 
-    public float GetVolume() {
-        return length * width * height;
-    }
-
-    public String GetTitle() {
+    public String getTitle() {
         return title;
     }
 

@@ -37,7 +37,11 @@ public abstract class Animal implements Growable {
 
     @Override
     public String toString() {
-        return "Animal{name='" + name + "',size=" + size + ",isAlive=" + isAlive + "}";
+        return "Animal{" +
+                "name='" + name + '\'' +
+                ", size=" + size +
+                ", isAlive=" + isAlive +
+                '}';
     }
 
     @Override
